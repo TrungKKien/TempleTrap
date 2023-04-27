@@ -31,10 +31,25 @@ $("li #play").each(function(){
 
 // Khi click vào 1 sô thì gọi đến hàm move để di chuyển
 $("#puzzle .cell-puzzle").bind("click",function() {
-  if(secs > 0){
-    var obj = $(this);
-    move(obj);
-  }
+  var obj = $(this);
+  setTimeout(function() {
+      if(secs > 0){
+        // var obj = $(this);
+        move(obj);
+    }
+  }, 300);
+  $(document).ready(function() {
+    $("#puzzle .cell-puzzle").dblclick(function() { 
+      $("#puzzle .cell-puzzle").removeClass("red");
+        $(this).addClass("red");
+    });
+  });
+    $(document).ready(function() {
+        $(".winn").dblclick(function() {
+            $("#puzzle .cell-puzzle").removeClass("red");
+            $(this).addClass("red");
+        });
+    });
 });
 
 // hàm init game, gọi 1 dãy số từ 1 đến 9 bất kì, sắp xếp các element theo dãy số đó để bắt đầu game
@@ -121,18 +136,17 @@ function lv25() {
 
 function lv26() {
   alert("li vờ 26");
-
   goUpBottom(1);
   bottomRight(2);
   topLeft(3);
   topRight(6);
   $("#6").addClass("red");
-    ngang(7);
-    doc(8);
-    bottomLeftGreen(4);
-    topRightGreen(5);
-    var arr = [5,4,8,7,6,3,2,1,0];
-    return arr;
+  ngang(7);
+  goUpTop(8);
+  bottomLeftGreen(4);
+  topRightGreen(5);
+  var arr = [5,4,8,7,6,3,2,1,0];
+  return arr;
 }
 
 function lv27() {
@@ -322,24 +336,7 @@ function intervalTime() {
 function move(obj) {
     var numberCell = parseFloat(obj.attr("number"));
     var win = false;
-        $(document).ready(function() {
-            $("#puzzle .cell-puzzle").dblclick(function() {
-              // Xóa class "red" của tất cả phần tử HTML
-                $("#puzzle .cell-puzzle").removeClass("red");
-              
-              // Thêm class "red" vào phần tử HTML được kích đúp chuột
-                $(this).addClass("red");
-            });
-          });
-            $(document).ready(function() {
-                $(".winn").dblclick(function() {
-              // Xóa class "red" của tất cả phần tử HTML
-                    $("#puzzle .cell-puzzle").removeClass("red");
-              
-              // Thêm class "red" vào phần tử HTML được kích đúp chuột
-                    $(this).addClass("red");
-                });
-            });
+        
     
     for(var i = 0 ; i < 3 ; i++) {
         for(var j = 0 ; j < 3 ; j++) {
@@ -364,80 +361,60 @@ function move(obj) {
                         matrix[i][j + 1] = numberCell;
                         matrix[i][j] = 0;
           
-        } else if(i > 0 && matrix[i - 1][j] == 0) {
-            $("#puzzle .cell-puzzle[number=0]").css("top", i * 60 + "px");
-          obj.animate({
-            'top': (i - 1) * 60 + 'px'
-        },300);
-        
-        matrix[i-1][j] = numberCell;
-        matrix[i][j] = 0;
-        
-    } else if(i<3 && matrix[i+1][j]==0) {
-          $("#puzzle .cell-puzzle[number=0]").css("top", i * 60 + "px");
-          obj.animate({
-              'top': (i + 1) * 60 + 'px'
-            },300);
+                      } else if(i > 0 && matrix[i - 1][j] == 0) {
+                          $("#puzzle .cell-puzzle[number=0]").css("top", i * 60 + "px");
+                        obj.animate({
+                          'top': (i - 1) * 60 + 'px'
+                      },300);
+                      
+                      matrix[i-1][j] = numberCell;
+                      matrix[i][j] = 0;
+                      
+                  } else if(i<3 && matrix[i+1][j]==0) {
+                        $("#puzzle .cell-puzzle[number=0]").css("top", i * 60 + "px");
+                        obj.animate({
+                            'top': (i + 1) * 60 + 'px'
+                          },300);
 
-          matrix[i + 1][j] = numberCell;
-          matrix[i][j]=0;
-        }
-        if ($("#winn").hasClass("red")) {
-            win = checkWin();
-        }
-        if (win){
-            break;
-        }
-        
-        return; 
-        }
+                        matrix[i + 1][j] = numberCell;
+                        matrix[i][j]=0;
+                      }
+                      return; 
+                      }
+                  }
+              }
     }
-}
-}
-}
+};
 
-// checkWin()
-// hàm kiểm tra và báo chiến thắng
+$("#winn").dblclick(function () {
+  var win = $("#winn").hasClass("red") 
+  $("#winn").setTimeout(() => {
+    if (win) {
+      win = checkWin();
+    }
+  }, 1000);
+});
+
 function checkWin(){
   var winner =false;
-//   var winString = "1,2,3,4,5,6,7,8,0";
-//   var loseString = "1,2,3,4,5,6,8,7,0";
-
-//   var matrixStr = matrix.toString();
-// $(document).ready(function() {
-    // $("button").click(function() {
-      // Kiểm tra xem phần tử HTML không có class "red" hay không
-        if ($("#winn").hasClass("red")) {
+if ($("#winn").hasClass("red")) {
             winner = 1;
         }
-    // });
-//   });
   if(winner == 1) {
     clearTimeout(timer);
     $("#alert_puzzle").text("Bạn đã chiến thắng. Kỷ lục của bạn là " + $("#board-time").text());
-
-//   } else if (loseString == matrixStr) {
-//     $("#alert_puzzle").text('Bạn không có hy vọng để chiến thắng. Ấn nút "click to play" để chơi game mới');
   }
 }
 function lvMax(){
     doc(5)
-    
     topLeft(4);
-    
     topRightGreen(8);
-    
     goUpLeft(7);
     $("#7").addClass("red");
-
     bottomRight(6);
-    
     goUpRight(3);
-
     bottomLeft(2);
-
     bottomLeftGreen(1);
-
     var arr = [5,4,8,7,6,3,2,1,0];
     return arr;
 }

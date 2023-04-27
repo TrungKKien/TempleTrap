@@ -56,10 +56,12 @@ a{
   display: block;
 }
   #puzzle {
+    background-image: url("../image/becaxau.jpg");
+    background-size: cover;
     height:182px;
     width:182px;
     position:relative;
-    background-color: #3B9AFF;
+    /* background-color: #3B9AFF; */
     border:5px solid #757575;
     margin:0 auto 25px;
   }
@@ -80,14 +82,17 @@ a{
     /* position: relative; */
   }
   .cell-puzzle{
-    color: #f7ffaf;
+    color: #f7ffaf00;
+    background-image: url("../image/dat.jpg");
+    background-size: cover;
   }
   .winn{
     border-bottom: 5px solid #757575 ;
     border-top: 5px solid #757575 ;
     height: 35px;
     width: 50px;
-    background: #8eca32;
+    background-image: url("../image/co.jpg");
+    background-size: cover;
     position: absolute;
     top: 9px;
     left: -50px;
@@ -136,11 +141,11 @@ a{
 }
   .can1{
     /* position: absolute; */
-    background: #8a6d1e;
+    background: #676767;
   }
   .can2{
     /* position: absolute; */
-    background: #8a6d1e;
+    background: #676767;
   }
   #puzzle .cell-puzzle-zero {
     background-color:rgba(255, 255, 255, 0) !important;
@@ -150,7 +155,8 @@ a{
     height: 58px;
     width: 27px;
     position: absolute;
-    background: #d1d470;
+    background: #c6b64e;
+
     right: 0px;
     top: 0px;
   }
@@ -160,14 +166,16 @@ a{
     position: absolute;
     height: 58px;
     width: 18px;
-    background: #b3b650;
+    background: #b0b41c;
     right: 0px;
     top: 0px;
 }
   .thang-right::after{
     content: "";
     /* color: afb333; */
-    background: #8eca32;
+    /* background: #8eca32;/ */
+    background-image: url("../image/co.jpg");
+    background-size: cover;
     position: absolute;
     height: 58px;
     width: 9px;
@@ -179,7 +187,7 @@ a{
     width : 58px;
     height: 27px;
     position: absolute;
-    background: #d1d470;
+    background: #c6b64e;
     /* left: 0px; */
     top: 0px;
   }
@@ -189,14 +197,16 @@ a{
     position: absolute;
     width: 58px;
     height : 18px;
-    background: #b3b650;
+    background: #b0b41c;
     left: 0px;
     top: 0px;
 }
   .thang-top::after{
     content: "";
     /* color: afb333; */
-    background: #8eca32;
+    /* background: #8eca32; */
+    background-image: url("../image/co.jpg");
+    background-size: cover;
     position: absolute;
     width : 58px;
     height: 9px;
@@ -208,7 +218,7 @@ a{
     height: 58px;
     width: 27px;
     position: absolute;
-    background: #d1d470;
+    background: #c6b64e;
     left: 0px;
     top: 0px;
   }
@@ -218,14 +228,17 @@ a{
     position: absolute;
     height: 58px;
     width: 18px;
-    background: #b3b650;
+    background: #b0b41c;
     left: 0px;
     top: 0px;
 }
   .thang-left::after{
     content: "";
     /* color: afb333; */
-    background: #8eca32;
+    /* background: #8eca32; */
+    background-image: url("../image/co.jpg");
+    background-size: cover;
+
     position: absolute;
     height: 58px;
     width: 9px;
@@ -236,7 +249,7 @@ a{
     width : 58px;
     height: 27px;
     position: absolute;
-    background: #d1d470;
+    background: #c6b64e;
     /* left: 0px; */
     bottom: 0px;
   }
@@ -246,7 +259,7 @@ a{
     position: absolute;
     width: 58px;
     height : 18px;
-    background: #b3b650;
+    background: #b0b41c;
     left: 0px;
     bottom: 0px;
 }
@@ -254,16 +267,20 @@ a{
     content: "";
     /* color: afb333; */
     position: absolute;
-    background: #8eca32;
+    /* background: #8eca32; */
+    background-image: url("../image/co.jpg");
+    background-size: cover;
     width : 58px;
     height: 9px;
     left: 0px;
     bottom: 0px;
   }
   #puzzle .bg-green{
-    background: #8eca32;
+    background-image: url("../image/co.jpg");
+    background-size: cover;
+    
     z-index: 200;
-    color:#8eca32 ;
+    color:#8dca3200 ;
   }
   #puzzle > .row-1 {
     top: 0;
