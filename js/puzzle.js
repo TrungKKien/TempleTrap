@@ -336,8 +336,6 @@ function intervalTime() {
 function move(obj) {
     var numberCell = parseFloat(obj.attr("number"));
     var win = false;
-        
-    
     for(var i = 0 ; i < 3 ; i++) {
         for(var j = 0 ; j < 3 ; j++) {
             if(matrix[i][j] == numberCell) {
@@ -351,50 +349,45 @@ function move(obj) {
 
                         matrix[i][j - 1] = numberCell;
                         matrix[i][j] = 0;
-
-                        } else if(j < 3 && matrix[i][j + 1] == 0) {
-                            $("#puzzle .cell-puzzle[number=0]").css("left",j * 60 + "px");
-                            obj.animate({
-                                'left': (j + 1) * 60 + 'px'
+                    } else if(j < 3 && matrix[i][j + 1] == 0) {
+                        $("#puzzle .cell-puzzle[number=0]").css("left",j * 60 + "px");
+                        obj.animate({
+                            'left': (j + 1) * 60 + 'px'
                         }, 300);
-
                         matrix[i][j + 1] = numberCell;
                         matrix[i][j] = 0;
-          
-                      } else if(i > 0 && matrix[i - 1][j] == 0) {
-                          $("#puzzle .cell-puzzle[number=0]").css("top", i * 60 + "px");
+                    } else if(i > 0 && matrix[i - 1][j] == 0) {
+                        $("#puzzle .cell-puzzle[number=0]").css("top", i * 60 + "px");
                         obj.animate({
-                          'top': (i - 1) * 60 + 'px'
-                      },300);
+                        'top': (i - 1) * 60 + 'px'
+                    },300);
+                    matrix[i-1][j] = numberCell;
+                    matrix[i][j] = 0;
                       
-                      matrix[i-1][j] = numberCell;
-                      matrix[i][j] = 0;
-                      
-                  } else if(i<3 && matrix[i+1][j]==0) {
+                    } else if (i < 3 && matrix[i + 1][j] == 0) {
                         $("#puzzle .cell-puzzle[number=0]").css("top", i * 60 + "px");
                         obj.animate({
                             'top': (i + 1) * 60 + 'px'
                           },300);
-
-                        matrix[i + 1][j] = numberCell;
-                        matrix[i][j]=0;
-                      }
-                      return; 
-                      }
-                  }
-              }
+                      matrix[i + 1][j] = numberCell;
+                      matrix[i][j]=0;
+                    }
+                    return; 
+                    }
+                }
+            }
     }
 };
 
-$("#winn").dblclick(function () {
-  var win = $("#winn").hasClass("red") 
-  $("#winn").setTimeout(() => {
-    if (win) {
-      win = checkWin();
+setInterval(function() {
+  if($('#winn').hasClass('red')){
+    win = checkWin();
+    if (winn) {
+      if (win) {
+      }
     }
-  }, 1000);
-});
-
+  }
+}, 1000);
 function checkWin(){
   var winner =false;
 if ($("#winn").hasClass("red")) {
